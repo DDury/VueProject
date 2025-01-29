@@ -1,6 +1,9 @@
 const RandNum = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
+const EndGame = (user) => {
+  alert(`${user} Died! GameOver!!!`);
+};
 
 const app = Vue.createApp({
   data() {
@@ -18,32 +21,37 @@ const app = Vue.createApp({
       const UserDamage = RandNum(8, 15);
       this.MonsterHealth -= UserDamage;
       this.PlayerHealth -= MonsterDamage;
-      this.BattleLogs.push(
-        `${this.FightNum} : The Monster damaged ${UserDamage} | The Player damaged ${MonsterDamage}`
-      );
-      this.BattleLogs.push(
-        `The Player ${this.PlayerHealth} | The Monster ${this.MonsterHealth} [${this.FightNum} | ${this.GoongNum}]`
-      );
-      this.FightNum += 1;
-    },
-    Goong() {
-      if (this.FightNum < 3 || this.FightNum - this.GoongNum < 3) {
-        alert(`Wait cooltime`);
+      if (this.MonsterHealth <= 0) {
+        this.MonsterHealth = 0;
+        EndGame("Monster");
+        return;
+      } else if (this.PlayerHealth <= 0) {
+        this.PlayerHealth = 0;
+        EndGame("Player");
         return;
       } else {
-        const MonsterDamage = RandNum(10, 18);
-        const UserDamage = RandNum(15, 25);
-        this.MonsterHealth -= UserDamage;
-        this.PlayerHealth -= MonsterDamage;
         this.BattleLogs.push(
-          `${this.FightNum} : Goong !!! The Monster damaged ${UserDamage} | The Player damaged ${MonsterDamage}`
+          `${this.FightNum} : The Monster damaged ${UserDamage} | The Player damaged ${MonsterDamage}`
         );
         this.BattleLogs.push(
           `The Player ${this.PlayerHealth} | The Monster ${this.MonsterHealth} [${this.FightNum} | ${this.GoongNum}]`
         );
-        this.GoongNum = this.FightNum;
         this.FightNum += 1;
       }
+    },
+    Goong() {
+      const MonsterDamage = RandNum(10, 18);
+      const UserDamage = RandNum(15, 25);
+      this.MonsterHealth -= UserDamage;
+      this.PlayerHealth -= MonsterDamage;
+      this.BattleLogs.push(
+        `${this.FightNum} : Goong !!! The Monster damaged ${UserDamage} | The Player damaged ${MonsterDamage}`
+      );
+      this.BattleLogs.push(
+        `The Player ${this.PlayerHealth} | The Monster ${this.MonsterHealth} [${this.FightNum} | ${this.GoongNum}]`
+      );
+      this.GoongNum = this.FightNum;
+      this.FightNum += 1;
     },
   },
   computed: {
@@ -52,6 +60,9 @@ const app = Vue.createApp({
     },
     PlayerBar() {
       return { width: this.PlayerHealth + "%" };
+    },
+    CoolTime() {
+      return this.FightNum - this.GoongNum < 3;
     },
   },
 });

@@ -31,10 +31,8 @@
       </section>
       <section id="controls">
         <button @click="PlayerAttack">ATTACK</button>
-        <button v-if="FightNum-GoongNum>=3" id="" @click="Goong">
-          SPECIAL ATTACK
         </button>
-        <button v-if="FightNum-GoongNum < 3" id="Goong" @click="Goong">
+        <button :disabled="CoolTime" id="" @click="Goong">
           SPECIAL ATTACK
         </button>
         <button>HEAL</button>
