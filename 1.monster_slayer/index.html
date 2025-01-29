@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -20,24 +20,31 @@
       <section id="monster" class="container">
         <h2>Monster Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value"></div>
+          <div class="healthbar__value" :style="MonsterBar"></div>
         </div>
       </section>
       <section id="player" class="container">
         <h2>Your Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value"></div>
+          <div class="healthbar__value" :style="PlayerBar"></div>
         </div>
       </section>
       <section id="controls">
-        <button>ATTACK</button>
-        <button>SPECIAL ATTACK</button>
+        <button @click="PlayerAttack">ATTACK</button>
+        <button v-if="FightNum-GoongNum>=3" id="" @click="Goong">
+          SPECIAL ATTACK
+        </button>
+        <button v-if="FightNum-GoongNum < 3" id="Goong" @click="Goong">
+          SPECIAL ATTACK
+        </button>
         <button>HEAL</button>
         <button>SURRENDER</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <ul></ul>
+        <ul>
+          <li v-for="log in BattleLogs">{{log}}</li>
+        </ul>
       </section>
     </div>
   </body>
