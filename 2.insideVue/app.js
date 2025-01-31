@@ -1,8 +1,9 @@
 const app = Vue.createApp({
   data() {
     return {
-      currentUserInput: '',
-      message: 'Vue is great!',
+      currentUserInput: "",
+      message: "Vue is great!",
+      message2: "inputhere",
     };
   },
   methods: {
@@ -10,9 +11,9 @@ const app = Vue.createApp({
       this.currentUserInput = event.target.value;
     },
     setText() {
-      this.message = this.currentUserInput;
+      this.message = this.$refs.thisinput.value;
     },
   },
 });
 
-app.mount('#app');
+app.mount("#app");

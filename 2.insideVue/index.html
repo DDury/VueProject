@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -18,9 +18,11 @@
     </header>
     <section id="app">
       <h2>How Vue Works</h2>
-      <input type="text" @input="saveInput">
+      <input type="text" v-model="message2" />
+      <input type="text" ref="thisinput" />
       <button @click="setText">Set Text</button>
       <p>{{ message }}</p>
+      <p>{{ message2 }}</p>
     </section>
   </body>
 </html>
