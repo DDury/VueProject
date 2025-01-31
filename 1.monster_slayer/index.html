@@ -41,7 +41,7 @@
       <section id="log" class="container">
         <h2>Battle Log</h2>
         <ul>
-          <li v-for="log in BattleLogs">{{log}}</li>
+          <li v-for="log in BattleLogs" :class="{'log--monster':MonsterHealth>PlayerHealth,'log--player':PlayerHealth>MonsterHealth}">{{log}}</li>
         </ul>
       </section>
     </div>
