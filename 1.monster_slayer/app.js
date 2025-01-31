@@ -23,10 +23,16 @@ const app = Vue.createApp({
       this.PlayerHealth -= MonsterDamage;
       if (this.MonsterHealth <= 0) {
         this.MonsterHealth = 0;
+        this.BattleLogs.push(
+          `The Player ${this.PlayerHealth} | The Monster ${this.MonsterHealth}`
+        );
         EndGame("Monster");
         return;
       } else if (this.PlayerHealth <= 0) {
         this.PlayerHealth = 0;
+        this.BattleLogs.push(
+          `The Player ${this.PlayerHealth} | The Monster ${this.MonsterHealth}`
+        );
         EndGame("Player");
         return;
       } else {
