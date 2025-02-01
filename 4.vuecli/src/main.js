@@ -1,3 +1,8 @@
-import { createApp } from 'vue';
+import { createApp } from "vue";
+import App from "./app.vue";
+import FriendContact from "./components/FriendContact.vue";
 
-createApp({}).mount('');
+const app = createApp(App);
+app.component("friend-contact", FriendContact);
+
+app.mount("#app");

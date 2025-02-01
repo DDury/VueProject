@@ -1,7 +1,17 @@
-<template></template>
+<template>
+  <section>
+    <h2>My friends</h2>
+    <ul>
+      <li>
+        <friend-contact></friend-contact>
+        <friend-contact></friend-contact>
+      </li>
+    </ul>
+  </section>
+</template>
 
 <script>
-const app = {
+export default {
   data() {
     return {
       friends: [
@@ -9,7 +19,7 @@ const app = {
           id: "Manuel",
           name: "Manuel Lorenz",
           phone: "01234 5678 991",
-          Email: "manuel@localhost.com",
+          email: "manuel@localhost.com",
         },
         {
           id: "Julie",
