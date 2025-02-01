@@ -1,25 +1,24 @@
 <template>
   <li>
-    <h2>{{ friend.name }}</h2>
-    <button @click="toggleDetails">Show Detail</button>
+    <h2>{{ name }}{{ favor === 1 ? "|Good" : "|Bad" }}</h2>
+    <button @click="toggleDetails">
+      {{ detailsVisible ? "Hide " : "Show " }}Detail
+    </button>
     <ul v-if="detailsVisible">
-      <li><strong>Phone:</strong>{{ friend.phone }}</li>
-      <li><strong>Email:</strong>{{ friend.email }}</li>
+      <li><strong>Phone:</strong>{{ phone }}</li>
+      <li><strong>Email:</strong>{{ email }}</li>
     </ul>
   </li>
 </template>
 
 <script>
 export default {
+  props: ["name", "phone", "email", "favor"],
+
   data() {
     return {
       detailsVisible: false,
-      friend: {
-        id: "Manuel",
-        name: "Manuel Lorenz",
-        phone: "01234 5678 991",
-        email: "manuel@localhost.com",
-      },
+      favorFriend: this.favor,
     };
   },
   methods: {
