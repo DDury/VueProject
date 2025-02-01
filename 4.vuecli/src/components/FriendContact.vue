@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }}{{ favor === 1 ? "|Good" : "|Bad" }}</h2>
+    <h2>{{ name }}{{ favor === 1 ? "|Good" : "|Great" }}</h2>
     <button @click="toggleDetails">
       {{ detailsVisible ? "Hide " : "Show " }}Detail
     </button>
