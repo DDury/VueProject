@@ -1,23 +1,25 @@
 <template>
-  <header>
-    <h2>My friends</h2>
-  </header>
-  <add-user v-model="newUser" @submit="addUser"></add-user>
-  <section>
-    <ul>
-      <friend-contact
-        v-for="friend in friends"
-        :id="friend.id"
-        :key="friend.id"
-        :name="friend.name"
-        :phone="friend.phone"
-        :email="friend.email"
-        :favor="friend.favor"
-        @addFavor="addfavor"
-        @del-user="delUser"
-      ></friend-contact>
-    </ul>
-  </section>
+  <div>
+    <header>
+      <h2>My friends</h2>
+    </header>
+    <add-user v-model="newUser" @submit="addUser"></add-user>
+    <section>
+      <ul>
+        <friend-contact
+          v-for="friend in friends"
+          :id="friend.id"
+          :key="friend.id"
+          :name="friend.name"
+          :phone="friend.phone"
+          :email="friend.email"
+          :favor="friend.favor"
+          @addFavor="addfavor"
+          @del-user="delUser"
+        ></friend-contact>
+      </ul>
+    </section>
+  </div>
 </template>
 
 <script>
