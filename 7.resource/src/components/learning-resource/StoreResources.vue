@@ -1,12 +1,15 @@
 <template>
-<learning-resource
+<ul>
+  <learning-resource
 v-for="res in storeResources"
 :key="res.id"
 :title="res.title"
 :description="res.description"
 :link="res.link"
 >
-</learning-resource>
+  </learning-resource>
+</ul>
+
 </template>
 
 <script>
@@ -37,4 +40,10 @@ data() {
 }}
 </script>
 
-<style scoped></style>
+<style scoped>ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  max-width: 40rem;
+}</style>

@@ -1,4 +1,9 @@
-<template><DashBox><h1>Learnining Resources</h1></DashBox>
+<template>
+<header>
+    <h1>
+        <slot></slot>
+    </h1>
+</header>
 
 </template>
 <script>
@@ -7,5 +12,18 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
+header {
+  width: 100%;
+  height: 5rem;
+  background-color: #640032;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  color: white;
+  margin: 0;
+}
 </style>
