@@ -19,7 +19,8 @@ export default {
 };
 </script>
 
-<style scoped>li {
+<style scoped>
+li {
   margin: auto;
   max-width: 40rem;
 }
