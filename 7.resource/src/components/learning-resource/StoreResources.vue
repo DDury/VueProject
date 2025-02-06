@@ -6,7 +6,8 @@ v-for="res in storeResources"
 :description="res.description"
 :link="res.link"
 >
-</learning-resource></template>
+</learning-resource>
+</template>
 
 <script>
   import  LearningResource from './LearningResource.vue';

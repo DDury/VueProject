@@ -1,4 +1,4 @@
-<template>
+<template><DashBox>
   <li>
     <div>
       <header>
@@ -10,10 +10,11 @@
     <nav>
       <a :href="link">View Resource</a>
     </nav>
-  </li>
+  </li></DashBox>
 </template>
 
 <script>
+import DashBox from './DashBox.vue';
 export default {
   props: ['title', 'description', 'link'],
 };
