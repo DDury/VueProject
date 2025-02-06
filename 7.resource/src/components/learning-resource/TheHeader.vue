@@ -1,5 +1,5 @@
-<template>
-<h1>Learnining Resources</h1>
+<template><DashBox><h1>Learnining Resources</h1></DashBox>
+
 </template>
 <script>
 export default{
@@ -7,4 +7,5 @@ export default{
 }
 </script>
 
-<style></style>
+<style>
+</style>

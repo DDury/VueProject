@@ -16,4 +16,7 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+ul {
+  list-style: none;
+}</style>

@@ -1,10 +1,10 @@
 <template>
-<section><slot :name="card"></slot></section>
+<section><slot></slot></section>
 </template>
 <script>
 export default {}
 </script>
-<style scoped>
+<style >
 section {
   margin: 2rem auto;
   max-width: 30rem;

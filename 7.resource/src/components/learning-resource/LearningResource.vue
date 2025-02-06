@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import DashBox from './DashBox.vue';
 export default {
   props: ['title', 'description', 'link'],
 };
