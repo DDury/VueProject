@@ -3,7 +3,7 @@
     <div>
       <header>
         <h3>{{ title }}</h3>
-        <button>Delete</button>
+        <the-btn>Delete</the-btn>
       </header>
     </div>
     <p>{{ description }}</p>
