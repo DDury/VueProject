@@ -1,16 +1,18 @@
-<template><dash-box>  
-  <li>
-    <div>
-      <header>
-        <h3>{{ title }}</h3>
-        <the-btn>Delete</the-btn>
-      </header>
-    </div>
-    <p>{{ description }}</p>
-    <nav>
-      <a :href="link">View Resource</a>
-    </nav>
-  </li></dash-box>
+<template>
+  <dash-box>
+    <li>
+      <div>
+        <header>
+          <h3>{{ title }}</h3>
+          <the-btn>Delete</the-btn>
+        </header>
+      </div>
+      <p>{{ description }}</p>
+      <nav>
+        <a :href="link">View Resource</a>
+      </nav>
+    </li></dash-box
+  >
 </template>
 
 <script>
@@ -48,4 +50,5 @@ a {
 a:hover,
 a:active {
   color: #c89300;
-}</style>
+}
+</style>
