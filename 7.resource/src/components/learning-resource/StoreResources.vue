@@ -36,6 +36,23 @@ export default {
       ],
     };
   },
+  provide () {
+    return{
+      AddNew: (...args) => this.addRcs(...args)
+    }},
+  
+  methods :{
+    addRcs (name,des,link) {
+      const newScr = {
+      id : new Date().toISOString(),
+      title : name,
+      description : des,
+      link : link
+    }
+    this.storeResources.push(newScr)
+
+    }
+  }
 };
 </script>
 
