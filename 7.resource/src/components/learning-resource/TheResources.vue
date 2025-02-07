@@ -23,9 +23,37 @@ export default {
       selectTab: 'Store-resources',
       mode1: 'flat',
       mode2: 'flat',
+      storeResources: [
+        {
+          id: 'official-guide',
+          title: 'official guide',
+          description: 'The official Vue.js doc',
+          link: 'https://vuejs.org',
+        },
+        {
+          id: 'google',
+          title: 'Google',
+          description: 'Learn to google',
+          link: 'https://google.com',
+        },
+      ],
     };
   },
+  provide() {
+    return { AddConts: this.AddContents, StoredRcs: this.storeResources };
+  },
+
   methods: {
+    AddContents(a, b, c) {
+      const NewInput = {
+        id: new Date().toISOString(),
+        title: a,
+        description: b,
+        link: c,
+      };
+      this.storeResources.push(NewInput);
+      this.selectTab = 'store-resources';
+    },
     changeStored() {
       this.selectTab = 'store-resources';
     },
@@ -33,6 +61,7 @@ export default {
       this.selectTab = 'add-resources';
     },
   },
+
   computed: {
     changeMode() {
       return {

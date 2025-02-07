@@ -1,7 +1,7 @@
 <template>
   <ul>
     <learning-resource
-      v-for="res in storeResources"
+      v-for="res in items"
       :key="res.id"
       :title="res.title"
       :description="res.description"
@@ -17,42 +17,10 @@ export default {
   components: {
     LearningResource,
   },
-
+  inject: ['StoredRcs'],
   data() {
-    return {
-      storeResources: [
-        {
-          id: 'official-guide',
-          title: 'official guide',
-          description: 'The official Vue.js doc',
-          link: 'https://vuejs.org',
-        },
-        {
-          id: 'google',
-          title: 'Google',
-          description: 'Learn to google',
-          link: 'https://google.com',
-        },
-      ],
-    };
+    return { items: this.StoredRcs };
   },
-  provide () {
-    return{
-      AddNew: (...args) => this.addRcs(...args)
-    }},
-  
-  methods :{
-    addRcs (name,des,link) {
-      const newScr = {
-      id : new Date().toISOString(),
-      title : name,
-      description : des,
-      link : link
-    }
-    this.storeResources.push(newScr)
-
-    }
-  }
 };
 </script>
 

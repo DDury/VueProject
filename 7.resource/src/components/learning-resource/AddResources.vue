@@ -11,30 +11,26 @@
     ></textarea>
     <label for="link">LINK</label
     ><input name="link" type="text" v-model="link" />
-    <the-btn @click="addData">submit</the-btn>
+    <the-btn @click="TheContents">submit</the-btn>
     <p>{{ title }}</p>
   </dash-box>
 </template>
 <script>
 export default {
-  inject : ['AddNew'],
+  inject: ['AddConts'],
   data() {
     return {
       title: 'title',
       description: 'description',
       link: 'url',
-
-    }
-    },methods : {
-      addData() {
-    this.AddNew(this.title, this.description, this.link);
-    this.title = "";
-    this.description = "";
-    this.link = "";
-  }
-    }
-  }
-
+    };
+  },
+  methods: {
+    TheContents() {
+      this.AddConts(this.title, this.description, this.link);
+    },
+  },
+};
 </script>
 <style scoped>
 label {
