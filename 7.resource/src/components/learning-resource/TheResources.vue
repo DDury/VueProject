@@ -5,8 +5,9 @@
       >Learning Resources</the-btn
     >
   </dash-box>
-
-  <component :is="selectTab"></component>
+  <keep-alive>
+    <component :is="selectTab"></component>
+  </keep-alive>
 </template>
 
 <script>

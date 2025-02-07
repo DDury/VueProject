@@ -20,9 +20,9 @@ export default {
   inject: ['AddConts'],
   data() {
     return {
-      title: 'title',
-      description: 'description',
-      link: 'url',
+      title: '',
+      description: '',
+      link: '',
     };
   },
   methods: {
