@@ -41,7 +41,11 @@ export default {
     };
   },
   provide() {
-    return { AddConts: this.AddContents, StoredRcs: this.storeResources };
+    return {
+      AddConts: this.AddContents,
+      StoredRcs: this.storeResources,
+      DelConts: this.DelContents,
+    };
   },
 
   methods: {
@@ -54,6 +58,10 @@ export default {
       };
       this.storeResources.push(NewInput);
       this.selectTab = 'store-resources';
+    },
+    DelContents(title) {
+      const idx = this.storeResources.findIndex((idx) => idx.title == title);
+      this.storeResources.splice(idx, 1);
     },
     changeStored() {
       this.selectTab = 'store-resources';
