@@ -59,8 +59,8 @@ export default {
       this.storeResources.push(NewInput);
       this.selectTab = 'store-resources';
     },
-    DelContents(title) {
-      const idx = this.storeResources.findIndex((idx) => idx.title == title);
+    DelContents(id) {
+      const idx = this.storeResources.findIndex((idx) => idx.id == id);
       this.storeResources.splice(idx, 1);
     },
     changeStored() {

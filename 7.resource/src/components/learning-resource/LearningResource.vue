@@ -4,7 +4,7 @@
       <div>
         <header>
           <h3>{{ title }}</h3>
-          <the-btn @click="DelContents">Delete</the-btn>
+          <the-btn @click="DelContents(id)">Delete</the-btn>
         </header>
       </div>
       <p>{{ description }}</p>
@@ -17,12 +17,12 @@
 
 <script>
 export default {
-  props: ['title', 'description', 'link'],
+  props: ['id', 'title', 'description', 'link'],
   inject: ['DelConts'],
 
   methods: {
-    DelContents() {
-      this.DelConts(this.title);
+    DelContents(id) {
+      this.DelConts(id);
     },
   },
 };
