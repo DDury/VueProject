@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import axios from "axios";
 
 // 반응형 변수 선언

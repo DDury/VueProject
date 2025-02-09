@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { defineProps, computed } from "vue";
 const props = defineProps(["name", "rating"]);
 
 const ratingClass = computed(() => {
