@@ -5,7 +5,11 @@
       <div>
         <base-button @click="loadExp">Load Submitted Experiences</base-button>
       </div>
-      <ul>
+      <p v-if="isLoading">Loading...</p>
+      <p v-else-if="!isLoading && (!results || results.length === 0)">
+        No Data
+      </p>
+      <ul v-else-if="!isLoading && results && results.length > 0">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -21,23 +25,23 @@
 import SurveyResult from "./SurveyResult.vue";
 import axios from "axios";
 
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 const results = ref([]);
+const isLoading = ref(false);
 
 const loadExp = async () => {
-  const { data: rowData } = await axios.get(
+  isLoading.value = true;
+  const { data } = await axios.get(
     "https://vue3-http-demo-fe1c0-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json"
   );
-  const loadedResults = [];
-  for (const id in rowData) {
-    loadedResults.push({
-      id: id,
-      name: rowData[id].userName,
-      rating: rowData[id].rating,
-    });
-  }
-  results.value = loadedResults;
+  isLoading.value = false;
+  results.value = Object.entries(data).map(([id, value]) => ({
+    id: id,
+    name: value.userName,
+    rating: value.rating,
+  }));
 };
+onMounted(loadExp);
 </script>
 
 <style scoped>
