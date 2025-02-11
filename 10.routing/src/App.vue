@@ -1,22 +1,20 @@
 <template>
   <div>
-    <the-navigation @set-page="setActivePage"></the-navigation>
+    <the-navigation></the-navigation>
     <main>
-      <component
-        :is="activePage === 'teams-list' ? TeamsList : UsersList"
-      ></component>
+      <router-view></router-view>
     </main>
   </div>
 </template>
 
 <script setup>
-import TeamsList from "./components/teams/TeamsList.vue";
-import UsersList from "./components/users/UsersList.vue";
+// import TeamsList from "./components/teams/TeamsList.vue";
+// import UsersList from "./components/users/UsersList.vue";
 import TheNavigation from "./components/nav/TheNavigation.vue";
 
 import { ref, provide } from "vue";
 
-const activePage = ref("teams-list");
+// const activePage = ref("teams-list");
 const teams = ref([
   { id: "t1", name: "Frontend Engineers", members: ["u1", "u2"] },
   { id: "t2", name: "Backend Engineers", members: ["u1", "u2", "u3"] },
@@ -33,9 +31,9 @@ const users = ref([
 provide("teams", teams);
 provide("users", users);
 
-const setActivePage = (page) => {
-  activePage.value = page;
-};
+// const setActivePage = (page) => {
+//   activePage.value = page;
+// };
 </script>
 
 <style>
