@@ -2,7 +2,11 @@
   <div>
     <the-navigation></the-navigation>
     <main>
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view v-slot="{ Component }">
+          <component :is="Component" />
+        </router-view>
+      </transition>
     </main>
   </div>
 </template>
@@ -47,5 +51,13 @@ html {
 
 body {
   margin: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease-in-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
