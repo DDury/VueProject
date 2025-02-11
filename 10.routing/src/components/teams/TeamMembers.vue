@@ -9,18 +9,35 @@
         :role="member.role"
       ></user-item>
     </ul>
+    <router-link to="/teams/t2">Team2</router-link>
   </section>
 </template>
 
 <script setup>
 import UserItem from "../users/UserItem.vue";
-import { ref } from "vue";
+import { ref, inject, onMounted, watch } from "vue";
+import { useRoute } from "vue-router";
 
-const teamName = ref("Test");
-const members = ref([
-  { id: "u1", fullName: "Max Schwarz", role: "Engineer" },
-  { id: "u2", fullName: "SH Kim", role: "Engineer" },
-]);
+const route = useRoute();
+
+const teams = inject("teams");
+const users = inject("users");
+
+const teamName = ref("");
+const members = ref([]);
+
+const findMenbers = () => {
+  const teamId = route.params.teamId;
+  const selectedTeam = teams.value.find((team) => team.id === teamId);
+  const selectedMembers = selectedTeam.members;
+  members.value = users.value.filter((user) =>
+    selectedMembers.includes(user.id)
+  );
+  teamName.value = selectedTeam.name;
+};
+onMounted(findMenbers);
+
+watch(() => route, findMenbers, { deep: true });
 </script>
 
 <style scoped>
@@ -40,5 +57,17 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+a {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background-color: #11005c;
+}
+
+a:hover,
+a:active {
+  background-color: #220a8d;
 }
 </style>

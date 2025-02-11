@@ -3,6 +3,7 @@
     <teams-item
       v-for="team in teams"
       :key="team.id"
+      :id="team.id"
       :name="team.name"
       :member-count="team.members.length"
     ></teams-item>
@@ -13,7 +14,7 @@
 import TeamsItem from "./TeamsItem.vue";
 import { inject } from "vue";
 
-const teams = inject(["teams"]);
+const teams = inject("teams");
 </script>
 
 <style scoped>

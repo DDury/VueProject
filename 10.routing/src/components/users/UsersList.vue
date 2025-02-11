@@ -18,7 +18,7 @@ import UserItem from "./UserItem.vue";
 import { inject } from "vue";
 import { useRouter } from "vue-router";
 
-const users = inject(["users"]);
+const users = inject("users");
 const router = useRouter();
 const mainpage = () => {
   router.push("/teams");
