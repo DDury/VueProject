@@ -6,6 +6,7 @@
         <router-view />
       </transition>
     </main>
+    <footer><router-view name="footer" /></footer>
   </div>
 </template>
 

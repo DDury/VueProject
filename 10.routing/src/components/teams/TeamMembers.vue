@@ -15,29 +15,28 @@
 
 <script setup>
 import UserItem from "../users/UserItem.vue";
-import { ref, inject, onMounted, watch } from "vue";
-import { useRoute } from "vue-router";
+import { ref, inject, watchEffect, defineProps } from "vue";
+// import { useRoute } from "vue-router";
 
-const route = useRoute();
+// const route = useRoute();
 
+const props = defineProps(["teamId"]);
 const teams = inject("teams");
 const users = inject("users");
 
 const teamName = ref("");
 const members = ref([]);
 
-const findMenbers = () => {
-  const teamId = route.params.teamId;
-  const selectedTeam = teams.value.find((team) => team.id === teamId);
-  const selectedMembers = selectedTeam.members;
+watchEffect(() => {
+  const selectedTeam = teams.value.find((team) => team.id === props.teamId);
   members.value = users.value.filter((user) =>
-    selectedMembers.includes(user.id)
+    selectedTeam.members.includes(user.id)
   );
   teamName.value = selectedTeam.name;
-};
-onMounted(findMenbers);
+});
+// onMounted(()=>{findMenbers(props.teamId)});
 
-watch(() => route, findMenbers, { deep: true });
+// watch(() => props.teamId, findMenbers);
 </script>
 
 <style scoped>
