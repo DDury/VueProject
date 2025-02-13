@@ -4,6 +4,7 @@ import UsersList from "../components/users/UsersList.vue";
 import TeamMembers from "../components/teams/TeamMembers.vue";
 import TeamsFooter from "../components/teams/TeamsFooter.vue";
 import UsersFooter from "../components/users/UsersFooter.vue";
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -28,4 +29,4 @@ const router = createRouter({
 });
 
 // export default router;
-export { router };
+export default router;
