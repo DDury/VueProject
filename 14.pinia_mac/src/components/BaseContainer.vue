@@ -13,7 +13,7 @@
 
 <script setup>
 import { defineProps } from 'vue'
-import { useCounterStore } from '@/stores/counter'
+import { useCounterStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 
 defineProps(['title'])

@@ -21,7 +21,7 @@ export const useCounterStore = defineStore('counter', () => {
     count.value -= nu
   }
 
-  const plus5 = () => {
+  const plus5 = async () => {
     setTimeout(() => {
       count.value += 5
     }, 2000)
