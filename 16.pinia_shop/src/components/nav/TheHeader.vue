@@ -10,7 +10,10 @@
         </li>
         <li>
           <router-link to="/cart">Cart</router-link>
-          <base-badge mode="elegant">{{ cart.qty }}</base-badge>
+          <base-badge mode="elegant" v-if="isLoggedIn">{{ cart.qty }}</base-badge>
+          <base-badge mode="elegant" v-if="isLoggedIn">{{
+            `$${cart.total.toFixed(2)}`
+          }}</base-badge>
         </li>
         <li v-if="isLoggedIn">
           <router-link to="/admin">Admin</router-link>
@@ -18,16 +21,22 @@
       </ul>
     </nav>
     <div>
-      <button v-if="!isLoggedIn" @click="login">Login</button>
-      <button v-if="isLoggedIn" @click="logout">Logout</button>
+      <button v-if="!isLoggedIn" @click="authenStore.login">Login</button>
+      <button v-if="isLoggedIn" @click="authenStore.logout">Logout</button>
     </div>
   </header>
 </template>
 
-<script>
-export default {
-  inject: ['isLoggedIn', 'login', 'logout', 'cart'],
-};
+<script setup>
+import { useAuthenStore, useCartStore } from '@/stores'
+import { storeToRefs } from 'pinia'
+storeToRefs
+
+const authenStore = useAuthenStore()
+const cartStore = useCartStore()
+
+const { isLoggedIn } = storeToRefs(authenStore)
+const { cart } = storeToRefs(cartStore)
 </script>
 
 <style scoped>

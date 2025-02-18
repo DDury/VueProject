@@ -1,7 +1,9 @@
 <template>
   <section>
     <h2>Your Cart</h2>
-    <h3>Total Amount: <base-badge mode="elegant">${{ cartTotal }}</base-badge></h3>
+    <h3>
+      Total Amount: <base-badge mode="elegant">${{ cartTotal }}</base-badge>
+    </h3>
     <ul>
       <cart-item
         v-for="item in cart.items"
@@ -16,20 +18,15 @@
   </section>
 </template>
 
-<script>
-import CartItem from '../components/cart/CartItem.vue';
+<script setup>
+import { useCartStore } from '@/stores'
+import { storeToRefs } from 'pinia'
+import CartItem from '../components/cart/CartItem.vue'
+import { computed } from 'vue'
+const cartStore = useCartStore()
+const { cart } = storeToRefs(cartStore)
 
-export default {
-  inject: ['cart'],
-  components: {
-    CartItem,
-  },
-  computed: {
-    cartTotal() {
-      return this.cart.total.toFixed(2);
-    }
-  }
-};
+const cartTotal = computed(() => cart.value.total.toFixed(2))
 </script>
 
 <style scoped>
@@ -46,7 +43,7 @@ h2 {
 }
 
 h3 {
- text-align: center;
+  text-align: center;
 }
 
 ul {

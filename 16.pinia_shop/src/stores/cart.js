@@ -26,9 +26,16 @@ export const useCartStore = defineStore('cart', () => {
       (cartItem) => cartItem.productId === prodId,
     )
     const prodData = cart.value.items[productInCartIndex]
-    cart.value.items.splice(productInCartIndex, 1)
-    cart.value.qty -= prodData.qty
-    cart.value.total -= prodData.price * prodData.qty
+    if (prodData.qty >= 1) {
+      cart.value.qty--
+      cart.value.total -= prodData.price
+      prodData.qty--
+    }
+    if (prodData.qty === 0) {
+      cart.value.items.splice(productInCartIndex, 1)
+      cart.value.qty -= prodData.qty
+      cart.value.total -= prodData.price * prodData.qty
+    }
   }
   return { cart, addProductToCart, removeProductFromCart }
 })

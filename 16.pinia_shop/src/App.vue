@@ -1,11 +1,16 @@
 <script setup>
 import { RouterView } from 'vue-router'
-// import TheHeader from './components/nav/TheHeader.vue'
+import TheHeader from './components/nav/TheHeader.vue'
+import { useAuthenStore } from './stores'
+import { storeToRefs } from 'pinia'
+
+const authenStore = useAuthenStore()
+const { isLoggedIn } = storeToRefs(authenStore)
 </script>
 
 <template>
-  <!-- <the-header></the-header> -->
-  <RouterView />
+  <the-header></the-header>
+  <RouterView v-if="isLoggedIn" />
 </template>
 
 <style>

@@ -21,10 +21,12 @@
 <script setup>
 import { defineProps } from 'vue'
 import { useCartStore } from '@/stores'
+import { useRouter } from 'vue-router'
 
 const cart = useCartStore()
+const router = useRouter()
 
-const { id, image, title, description } = defineProps([
+const { id, image, title, price, description } = defineProps([
   'id',
   'image',
   'title',
@@ -39,6 +41,7 @@ const addToCart = () => {
     title,
     price,
   })
+  router.push('/cart')
 }
 </script>
 

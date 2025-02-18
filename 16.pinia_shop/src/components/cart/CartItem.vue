@@ -21,21 +21,25 @@
   </li>
 </template>
 
-<script>
-export default {
-  inject: ['removeProductFromCart'],
-  props: ['prodId', 'title', 'image', 'price', 'qty'],
-  computed: {
-    itemTotal() {
-      return (this.price * this.qty).toFixed(2);
-    }
-  },
-  methods: {
-    remove() {
-      this.removeProductFromCart(this.prodId);
-    }
-  }
-};
+<script setup>
+import { useCartStore } from '@/stores'
+import { defineProps, computed } from 'vue'
+
+const cartStore = useCartStore()
+
+const { prodId, title, image, price, qty } = defineProps([
+  'prodId',
+  'title',
+  'image',
+  'price',
+  'qty',
+])
+
+const itemTotal = computed(() => (price * qty).toFixed(2))
+
+const remove = () => {
+  cartStore.removeProductFromCart(prodId)
+}
 </script>
 
 <style scoped>

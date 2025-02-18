@@ -7,7 +7,7 @@ export const useAuthenStore = defineStore('authen', () => {
     isLoggedIn.value = true
   }
   const logout = () => {
-    isLoggedIn = false
+    isLoggedIn.value = false
   }
 
   return { isLoggedIn, login, logout }
